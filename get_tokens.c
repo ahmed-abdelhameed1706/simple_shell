@@ -35,7 +35,7 @@ char **get_tokens(char *argv, char *delim)
 		i++;
 		argv = strtok(NULL, delim);
 	}
-	
+
 	words[i] = NULL;
 	free(token);
 	return (words);
@@ -45,7 +45,7 @@ char **get_tokens(char *argv, char *delim)
  * free_tokens - frees the space of the tokens we already used
  * @tokens: tokens to be freed
  *
- * Retunr: nothing
+ * Return: nothing
  */
 
 void free_tokens(char **tokens)

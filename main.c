@@ -9,6 +9,7 @@ int main(void)
 {
 	char *buf = NULL, **argv, *deli = " \n";
 
+	signal(SIGINT, SIG_IGN);
 	while (1)
 	{
 		buf = get_user_input();

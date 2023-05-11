@@ -10,9 +10,17 @@ char *get_user_input(void)
 {
 	size_t n = 0;
 	char *buffer = NULL;
+	ssize_t val;
 
 	printf("> ");
-	getline(&buffer, &n, stdin);
+	val = getline(&buffer, &n, stdin);
+
+	if (val == -1)
+	{
+		printf("\n");
+		free(buffer);
+		exit(0);
+	}
 
 	return (buffer);
 }

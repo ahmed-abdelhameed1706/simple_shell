@@ -13,10 +13,12 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <signal.h>
 
 /*Prototypes*/
 int execute(char **argv);
 char *get_user_input();
 char **get_tokens(char *argv, char *delim);
 void free_tokens(char **tokens);
+void get_signal(int sig);
 #endif /* SHELL_H */
