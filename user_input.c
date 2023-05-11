@@ -6,25 +6,13 @@
  * Return: a string that contains the user input to be used else where
  */
 
-ssize_t get_user_input(void)
+char *get_user_input(void)
 {
-	size_t n;
+	size_t n = 0;
 	char *buffer = NULL;
-	ssize_t input;
 
 	printf("> ");
-	input = getline(&buffer, &n, stdin);
-	
-	free(buffer);
+	getline(&buffer, &n, stdin);
 
-	return (input);
-}
-
-int main(void)
-{
-	while(1)
-	{
-		get_user_input();
-	}
-	return (0);
+	return (buffer);
 }

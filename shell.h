@@ -16,5 +16,7 @@
 
 /*Prototypes*/
 int execute(char **argv);
+char *get_user_input();
+char **get_tokens(char *argv, char *delim);
 
 #endif /* SHELL_H */
