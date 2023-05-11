@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	char *buf = NULL, **argv, *deli = " ";
+	char *buf = NULL, **argv, *deli = " \n";
 
 	while (1)
 	{
