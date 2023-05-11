@@ -15,7 +15,7 @@ int main(void)
 		argv = get_tokens(buf, deli);
 		execute(argv);
 
-		free(argv);
+		free_tokens(argv);
 	}
 	return (0);
 }

@@ -18,5 +18,5 @@
 int execute(char **argv);
 char *get_user_input();
 char **get_tokens(char *argv, char *delim);
-
+void free_tokens(char **tokens);
 #endif /* SHELL_H */
