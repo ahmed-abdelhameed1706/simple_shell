@@ -15,5 +15,6 @@
 #include <errno.h>
 
 /*Prototypes*/
+int execute(char **argv);
 
 #endif /* SHELL_H */
