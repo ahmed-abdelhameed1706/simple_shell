@@ -16,6 +16,13 @@ int main(void)
 		buf = get_user_input();
 		argv = get_tokens(buf, deli);
 
+		if (!argv[0])
+		{
+			free_tokens(argv);
+			free(buf);
+			continue;
+		}
+
 		if (strcmp(argv[0], "exit") == 0)
 		{
 			if (argv[1])
