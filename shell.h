@@ -21,4 +21,5 @@ char *get_user_input();
 char **get_tokens(char *argv, char *delim);
 void free_tokens(char **tokens);
 void get_signal(int sig);
+char *get_path(char *command);
 #endif /* SHELL_H */
