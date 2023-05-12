@@ -28,7 +28,7 @@ void free_tokens(char **tokens);
 void get_signal(int sig);
 char *get_path(char *command);
 int print_env(void);
-ssize_t _getline(char **lineptr, size_t *n);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int exit_shell(char *code);
 
 #endif /* SHELL_H */
