@@ -8,6 +8,7 @@
 int main(void)
 {
 	char *buf = NULL, **argv, *deli = " \n";
+	int exit_arg;
 
 	signal(SIGINT, SIG_IGN);
 	while (1)
@@ -17,9 +18,13 @@ int main(void)
 
 		if (strcmp(argv[0], "exit") == 0)
 		{
+			if (argv[1])
+			{
+				exit_arg = atoi(argv[1]);
+			}
 			free_tokens(argv);
 			free(buf);
-			exit(0);
+			exit(exit_arg);
 		}
 
 		else if (strcmp(argv[0], "env") == 0)
