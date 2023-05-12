@@ -22,7 +22,7 @@ char **get_tokens(char *argv, char *delim)
 		token = strtok(NULL, delim);
 	}
 
-	words = malloc(sizeof(char *) * argc);
+	words = malloc(sizeof(char *) * (argc + 1));
 
 	if (words == NULL)
 		return (NULL);
