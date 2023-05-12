@@ -52,6 +52,9 @@ int main(void)
 		{
 			execute(argv);
 		}
+		else
+			perror("Error:");
+
 		free_tokens(argv);
 		free(buf);
 	}
