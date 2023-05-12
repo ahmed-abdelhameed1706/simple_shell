@@ -6,25 +6,33 @@
  * @n: buffer size
  * Return: buffer size
 */
-ssize_t _getline(char **lineptr, size_t *n)
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	int count = 1, i = 0;
-	char c, *str;
+	ssize_t read_chars = 0;
+	char *line_end = NULL;
 
-	str = malloc(sizeof(char));
+	if (lineptr == NULL || n == NULL || stream == NULL)
+		return (-1);
 
-	while ((c = getchar()) != '\n')
+	*n = 128;
+	*lineptr = malloc(sizeof(char) * (*n));
+	if (*lineptr == NULL)
+		return (-1);
+
+	while (fgets(*lineptr + read_chars, *n - read_chars, stream) != NULL)
 	{
-		count++;
-		str = realloc(str, sizeof(char) * count);
-		str[i] = c;
-		i++;
+		read_chars += strlen(*lineptr + read_chars);
+		line_end = strchr(*lineptr, '\n');
+		if (line_end != NULL)
+			return (read_chars);
+		if (*n - read_chars < 128)
+		{
+			*n += 128;
+			*lineptr = realloc(*lineptr, sizeof(char) * (*n));
+			if (*lineptr == NULL)
+				return (-1);
+		}
 	}
-	str[i] = '\n';
 
-	*n = count;
-	*lineptr = strdup(str);
-	free(str);
-
-	return (count);
+	return (-1);
 }
