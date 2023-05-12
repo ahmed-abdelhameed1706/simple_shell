@@ -10,9 +10,9 @@ char *get_path(char *command)
 	char *usr, *bin;
 	int len = 0, i;
 
-	if (command[0] == '\\' && access(command, F_OK) == 0)
+	if (command[0] == '/' && access(command, F_OK) == 0)
 		return (command);
-	else if (command[0] == '\\' && access(command, F_OK) == -1)
+	else if (command[0] == '/' && access(command, F_OK) == -1)
 		return (NULL);
 
 	while (command[len])
