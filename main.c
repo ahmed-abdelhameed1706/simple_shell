@@ -20,11 +20,20 @@ int main(void)
 		{
 			if (argv[1])
 			{
-				exit_arg = atoi(argv[1]);
+				exit_arg = exit_shell(argv[1]);
+				if (exit_arg >= 0)
+				{
+					free_tokens(argv);
+					free(buf);
+					exit(exit_arg);
+				}
 			}
-			free_tokens(argv);
-			free(buf);
-			exit(exit_arg);
+			else
+			{
+				free_tokens(argv);
+				free(buf);
+				exit(0);
+			}
 		}
 
 		else if (strcmp(argv[0], "env") == 0)
