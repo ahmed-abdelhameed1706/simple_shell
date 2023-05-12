@@ -27,5 +27,5 @@ void free_tokens(char **tokens);
 void get_signal(int sig);
 char *get_path(char *command);
 int print_env(void);
-
+ssize_t _getline (char **lineptr, size_t *n);
 #endif /* SHELL_H */
