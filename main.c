@@ -14,11 +14,22 @@ int main(void)
 	{
 		buf = get_user_input();
 		argv = get_tokens(buf, deli);
-		argv[0] = get_path(argv[0]);
-		if (argv[0])
-			execute(argv);
 
+		if (strcmp(argv[0], "exit") == 0)
+		{
+			free_tokens(argv);
+			free(buf);
+			exit(0);
+		}
+
+		argv[0] = get_path(argv[0]);
+
+		if (argv[0])
+		{
+			execute(argv);
+		}
 		free_tokens(argv);
+		free(buf);
 	}
 	return (0);
 }
