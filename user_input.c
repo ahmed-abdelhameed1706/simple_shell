@@ -13,7 +13,7 @@ char *get_user_input(void)
 	ssize_t val;
 
 	printf("> ");
-	val = getline(&buffer, &n, stdin);
+	val = _getline(&buffer, &n);
 
 	if (val == -1)
 	{
