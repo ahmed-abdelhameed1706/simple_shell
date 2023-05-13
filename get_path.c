@@ -11,7 +11,10 @@ char *get_path(char *command)
 	int len = 0, i;
 
 	if (command[0] == '/' && access(command, F_OK) == 0)
+	{
+		command = strdup(command);
 		return (command);
+	}
 	else if (command[0] == '/' && access(command, F_OK) == -1)
 	{
 		command = strdup("null");
