@@ -9,12 +9,12 @@
  */
 char **get_tokens(char *argv, char *delim)
 {
-	char **words, *token;
+	char **words, *token, *input;
 	int i = 0, argc = 0;
 
 
-	token = strdup(argv);
-	token = strtok(token, delim);
+	input = strdup(argv);
+	token = strtok(input, delim);
 
 	while (token)
 	{
@@ -22,6 +22,7 @@ char **get_tokens(char *argv, char *delim)
 		token = strtok(NULL, delim);
 	}
 
+	free(input);
 	words = malloc(sizeof(char *) * (argc + 1));
 
 	if (words == NULL)
