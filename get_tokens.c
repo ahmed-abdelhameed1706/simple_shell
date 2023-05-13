@@ -9,36 +9,27 @@
  */
 char **get_tokens(char *argv, char *delim)
 {
-	char **words, *token, *input;
-	int i = 0, argc = 0;
+	char *token, **words;
+	int i, size = 0;
 
+	for (i = 0; argv[i] != '\n'; i++)
+		if (argv[i] == ' ')
+			size++;
+	size++;
 
-	input = strdup(argv);
-	token = strtok(input, delim);
+	words = malloc(sizeof(char *) * (size + 1));
+	if (!words)
+		return (NULL);
 
-	while (token)
+	token = strtok(argv, delim);
+
+	for (i = 0; token; i++)
 	{
-		argc++;
+		words[i] = strdup(token);
 		token = strtok(NULL, delim);
 	}
 
-	free(input);
-	words = malloc(sizeof(char *) * (argc + 1));
-
-	if (words == NULL)
-		return (NULL);
-
-	argv = strtok(argv, delim);
-
-	while (argv)
-	{
-		words[i] = strdup(argv);
-		i++;
-		argv = strtok(NULL, delim);
-	}
-
 	words[i] = NULL;
-	free(token);
 	return (words);
 }
 
