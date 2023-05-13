@@ -7,7 +7,7 @@
  */
 int main(void)
 {
-	char *buf = NULL, **argv, *deli = " \n";
+	char *buf = NULL, *command, **argv, *deli = " \n";
 	int exit_arg;
 
 	signal(SIGINT, SIG_IGN);
@@ -15,8 +15,8 @@ int main(void)
 	{
 		buf = get_user_input();
 		argv = get_tokens(buf, deli);
-
-		if (!argv[0])
+		
+	if (!argv[0])
 		{
 			free_tokens(argv);
 			free(buf);
@@ -45,17 +45,18 @@ int main(void)
 
 		else if (strcmp(argv[0], "env") == 0)
 			print_env();
-
-		argv[0] = get_path(argv[0]);
-
-		if (argv[0])
+		
+		command = get_path(argv[0]);
+		
+		if (strcmp(command, "null") != 0)
 		{
-			execute(argv);
+			execute(command, argv);
 		}
 		else
 			perror("Error:");
-
+			
 		free_tokens(argv);
+		free(command);
 		free(buf);
 	}
 	return (0);
