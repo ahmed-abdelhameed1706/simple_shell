@@ -21,7 +21,7 @@
 extern char **environ;
 
 /*Prototypes*/
-int execute(char **argv);
+int execute(char *command, char **argv);
 char *get_user_input();
 char **get_tokens(char *argv, char *delim);
 void free_tokens(char **tokens);
