@@ -13,8 +13,10 @@ char *get_path(char *command)
 	if (command[0] == '/' && access(command, F_OK) == 0)
 		return (command);
 	else if (command[0] == '/' && access(command, F_OK) == -1)
-		return (NULL);
-
+	{
+		command = strdup("null");
+		return (command);
+	}
 	while (command[len])
 		len++;
 
@@ -46,5 +48,6 @@ char *get_path(char *command)
 		return (command);
 	}
 	free(usr);
-	return (NULL);
+	command = strdup("null");
+	return (command);
 }
