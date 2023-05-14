@@ -42,10 +42,15 @@ int main(void)
 				exit(0);
 			}
 		}
-
 		else if (strcmp(argv[0], "env") == 0)
 			print_env();
-		
+		else if (strcmp(argv[0], "cd") == 0)
+		{
+			cd(argv[1]);
+			free_tokens(argv);
+			free(buf);
+			continue;
+		}
 		command = get_path(argv[0]);
 		
 		if (strcmp(command, "null") != 0)
@@ -53,7 +58,7 @@ int main(void)
 			execute(command, argv);
 		}
 		else
-			perror("Error:");
+			perror("Error");
 			
 		free_tokens(argv);
 		free(command);
