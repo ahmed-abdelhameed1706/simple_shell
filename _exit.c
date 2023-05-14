@@ -5,7 +5,7 @@
  * @argv: the argument to be parsed
  * @buf: the buffer to be freed
  *
- * Return : exit code
+ * Return: exit code
  */
 int hsh_exit(char **argv, char *buf)
 {

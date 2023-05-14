@@ -1,6 +1,11 @@
 #include "shell.h"
 
 /**
+ * parse_input - parses input coming from user
+ * @argv: the input
+ * @buf: buffer to be freed
+ *
+ * Return: 0 on success -1 on failure
  */
 int parse_input(char **argv, char *buf)
 {

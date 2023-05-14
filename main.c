@@ -21,14 +21,14 @@ int main(void)
 			continue;
 
 		command = get_path(argv[0]);
-		
+
 		if (strcmp(command, "null") != 0)
 		{
 			execute(command, argv);
 		}
 		else
 			perror("Error");
-			
+
 		free_tokens(argv);
 		free(command);
 		free(buf);

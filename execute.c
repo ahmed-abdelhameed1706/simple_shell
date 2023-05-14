@@ -3,6 +3,7 @@
 /**
  * execute - executes the program from the user input
  * @argv: array of strings to execute
+ * @command: command to be executed
  *
  * Return: 0 on success
  */

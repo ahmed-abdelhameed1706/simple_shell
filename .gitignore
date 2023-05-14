@@ -2,3 +2,5 @@
 *.out
 *.sh
 flags
+backups
+test

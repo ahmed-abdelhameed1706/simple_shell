@@ -1,8 +1,10 @@
 #include "shell.h"
 
 /**
- * exit_shell - checks if the argument after the exit function is a positive number
- * @code: the string that should be converted to number under conditions
+ * exit_shell - checks if the argument after the exit
+ * function is a positive number
+ * @code: the string that should be converted to
+ * number under conditions
  *
  * Return: the exit code
  */

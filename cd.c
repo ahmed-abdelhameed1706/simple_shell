@@ -16,12 +16,12 @@ void cd(char *dir)
 
 	if (cwd == NULL)
 		return;
-	
+
 	getcwd(cwd, PATH_MAX);
 
 	if (dir == NULL)
 		dir = home;
-	
+
 	else if (strcmp(dir, "-") == 0)
 	{
 		dir = oldpwd;

@@ -4,6 +4,7 @@
  * _getline - get a line from stdin
  * @lineptr: the buffer to store the line
  * @n: buffer size
+ * @stream: the file where input will be taken
  * Return: buffer size
 */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
