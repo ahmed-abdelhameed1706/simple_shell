@@ -7,7 +7,7 @@
 */
 char *get_path(char *command)
 {
-	char *usr, *bin;
+	char *bin;
 	int len = 0, i;
 
 	if (command[0] == '/' && access(command, F_OK) == 0)
@@ -23,8 +23,6 @@ char *get_path(char *command)
 	while (command[len])
 		len++;
 
-	usr = malloc(sizeof(char) * (len + 10));
-	strcpy(usr, "/usr/bin/");
 	bin = malloc(sizeof(char) * (len + 6));
 	strcpy(bin, "/bin/");
 
@@ -34,23 +32,12 @@ char *get_path(char *command)
 
 	if (access(bin, F_OK) == 0)
 	{
-		free(usr);
 		command = strdup(bin);
 		free(bin);
 		return (command);
 	}
-	free(bin);
-	for (i = 0; i < len; i++)
-		usr[i + 9] = command[i];
-	usr[i + 9] = '\0';
 
-	if (access(usr, F_OK) == 0)
-	{
-		command = strdup(usr);
-		free(usr);
-		return (command);
-	}
-	free(usr);
+	free(bin);
 	command = strdup("null");
 	return (command);
 }
