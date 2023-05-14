@@ -28,7 +28,9 @@ void cd(char *dir)
 		printf("%s\n", dir);
 	}
 	if (chdir(dir) != 0)
+	{
 		perror("cd");
+	}
 	else
 	{
 		setenv("OLDPWD", cwd, 1);
