@@ -21,12 +21,12 @@ char **get_tokens(char *argv, char *delim)
 	if (!words)
 		return (NULL);
 
-	token = strtok(argv, delim);
+	token = _strtok(argv, delim);
 
 	for (i = 0; token; i++)
 	{
 		words[i] = strdup(token);
-		token = strtok(NULL, delim);
+		token = _strtok(NULL, delim);
 	}
 
 	words[i] = NULL;
