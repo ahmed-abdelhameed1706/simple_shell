@@ -12,7 +12,6 @@ int parse_input(char **argv, char *buf)
 	if (!argv[0])
 	{
 		free_tokens(argv);
-		free(buf);
 		return (0);
 	}
 	if (strcmp(argv[0], "exit") == 0)
