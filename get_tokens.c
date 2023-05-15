@@ -13,7 +13,7 @@ char **get_tokens(char *argv, char *delim)
 	int i, size = 0;
 
 	for (i = 0; argv[i] != '\n'; i++)
-		if (argv[i] == ' ')
+		if (argv[i] == delim[0])
 			size++;
 	size++;
 
