@@ -35,5 +35,6 @@ int hsh_exit(char **argv, char *buf);
 int parse_input(char **argv, char *buf);
 int is_delim(char str_c, const char *delim);
 char *_strtok(char *str, const char *delim);
-char **script_exe(char *buffer);
+char **script_exe(char *buffer, char *re_buf, char **commands);
+char **get_commands(char *buffer);
 #endif /* SHELL_H */
