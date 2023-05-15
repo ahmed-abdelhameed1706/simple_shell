@@ -60,6 +60,7 @@ char **script_exe(char *buffer, char *re_buf, char **commands)
 char **get_commands(char *buffer)
 {
 	char *re_buf = NULL, **commands = NULL, *rm_new;
+	int size;
 
 	re_buf = malloc(sizeof(char) * 2);
 	commands = malloc(sizeof(char *) * 2);
@@ -73,6 +74,12 @@ char **get_commands(char *buffer)
 	if (buffer[0] != '.')
 	{
 		free(re_buf);
+		if (strchr(buffer, ';') != NULL)
+		{
+			free(commands);
+			commands = sep_handler(buffer, &size);
+			return (commands);
+		}
 		commands[0] = strdup(buffer);
 		commands[1] = NULL;
 		return (commands);

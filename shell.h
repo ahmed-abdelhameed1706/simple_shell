@@ -37,4 +37,5 @@ int is_delim(char str_c, const char *delim);
 char *_strtok(char *str, const char *delim);
 char **script_exe(char *buffer, char *re_buf, char **commands);
 char **get_commands(char *buffer);
+char **sep_handler(char *buf, int *size);
 #endif /* SHELL_H */
