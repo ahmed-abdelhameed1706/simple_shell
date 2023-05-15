@@ -14,11 +14,13 @@ int main(void)
 	while (1)
 	{
 		buf = get_user_input();
-		commands = script_exe(buf);
+		commands = get_commands(buf);
 		
 		if (!commands)
+		{
+			free(buf);
 			continue;
-
+		}
 		for (i = 0; commands[i]; i++)
 		{
 			argv = get_tokens(commands[i], deli);
