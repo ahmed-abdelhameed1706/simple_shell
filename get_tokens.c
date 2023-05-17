@@ -9,7 +9,7 @@
  */
 char **get_tokens(char *argv, char *delim)
 {
-	char *token, **words;
+	char *token, **words, *strip_str;
 	int i, size = 0;
 
 	for (i = 0; argv[i] != '\n'; i++)
@@ -25,7 +25,13 @@ char **get_tokens(char *argv, char *delim)
 
 	for (i = 0; token; i++)
 	{
-		words[i] = strdup(token);
+		if (token[0] == ' ' || token[strlen(token) - 1] == ' ')
+		{
+			strip_str = strip(token);
+			words[i] = strip_str;
+		}
+		else
+			words[i] = strdup(token);
 		token = _strtok(NULL, delim);
 	}
 
