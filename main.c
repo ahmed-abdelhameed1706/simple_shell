@@ -14,6 +14,13 @@ int main(void)
 	while (1)
 	{
 		buf = get_user_input();
+		for (i = 0; buf[i]; i++)
+			if (buf[i] == '#')
+			{
+				buf[i] = '\n';
+				buf[i + 1] = '\0';
+				break;
+			}
 		if (strchr(buf, ';') != NULL)
 			commands = strip_tokens(buf, delim, &size);
 		else
