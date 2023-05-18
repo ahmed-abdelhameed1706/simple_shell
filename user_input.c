@@ -11,13 +11,14 @@ char *get_user_input(void)
 	size_t n = 0;
 	char *buffer = NULL;
 	ssize_t val;
-
-	printf("> ");
+	if (isatty(STDIN_FILENO))	
+		write(STDIN_FILENO, "> ", 2);
 	val = _getline(&buffer, &n, stdin);
 
 	if (val == -1)
 	{
-		printf("\n");
+		if (isatty(STDIN_FILENO))	
+			write(STDIN_FILENO, "\n", 1);
 		free(buffer);
 		exit(0);
 	}
