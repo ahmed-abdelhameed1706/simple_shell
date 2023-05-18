@@ -31,26 +31,30 @@ char *_strtok(char *str, const char *delim)
 {
 	static char *backup_str;
 	char *token;
-	int i, len;
+	int i;
 
 	if (str != NULL)
 		backup_str = str;
 
 	if (backup_str == NULL)
 		return (NULL);
-	len = strlen(backup_str);
+	while (*backup_str != '\0' && strchr(delim, *backup_str) != NULL)
+		backup_str++;
+
+	if (*backup_str == '\0')
+		return (NULL);
+
 	token = backup_str;
 	for (i = 0; backup_str[i] != '\0'; i++)
 	{
-		if (is_delim(backup_str[i], delim))
+		if (strchr(delim, backup_str[i]) != NULL)
 		{
-			if (backup_str[i] == '\n' && len == 1)
-				return (NULL);
+			
 			backup_str[i] = '\0';
 			backup_str = &(backup_str[i + 1]);
 			return (token);
 		}
 	}
 	backup_str = NULL;
-	return (NULL);
+	return (token);
 }
