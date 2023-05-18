@@ -26,7 +26,7 @@ char *get_user_input();
 char **get_tokens(char *argv, char *delim);
 void free_tokens(char **tokens);
 void get_signal(int sig);
-char *get_path(char *command);
+char *get_path(char *command, char *path);
 int print_env(void);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int exit_shell(char *code);
@@ -41,4 +41,5 @@ char **sep_handler(char *buf, int *size);
 char *strip(char *str);
 char **strip_tokens(char *buf, char *delim, int *size);
 char *remove_spaces(char *input);
+char *_getenv(const char *name);
 #endif /* SHELL_H */
