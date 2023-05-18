@@ -5,39 +5,44 @@
  * @command: enterd command
  * Return: comamnd path
 */
-char *get_path(char *command)
+char *get_path(char *command, char *path)
 {
-	char *bin;
-	int len = 0, i;
+	char *command_path, *token;
+	int command_len, path_len, i;
 
 	if (command[0] == '/' && access(command, F_OK) == 0)
 	{
 		command = strdup(command);
 		return (command);
 	}
+
 	else if (command[0] == '/' && access(command, F_OK) == -1)
 	{
 		command = strdup("null");
 		return (command);
 	}
-	while (command[len])
-		len++;
 
-	bin = malloc(sizeof(char) * (len + 6));
-	strcpy(bin, "/bin/");
-
-	for (i = 0; i < len; i++)
-		bin[i + 5] = command[i];
-	bin[i + 5] = '\0';
-
-	if (access(bin, F_OK) == 0)
+	token = _strtok(path, ":");
+	while (token)
 	{
-		command = strdup(bin);
-		free(bin);
-		return (command);
-	}
+		command_len = strlen(command);
+		path_len = strlen(token);
+		command_path = malloc(sizeof(char) * (command_len + path_len + 2));
+		for (i = 0; token[i]; i++)
+			command_path[i] = token[i];
 
-	free(bin);
+		command_path[path_len++] = '/';
+
+		for (i = 0; command[i]; i++, path_len++)
+			command_path[path_len] = command[i];
+		command_path[path_len] = '\0';
+
+		if (access(command_path, F_OK) == 0)
+			return (command_path);
+
+		free(command_path);
+		token = _strtok(NULL, ":");
+	}
 	command = strdup("null");
 	return (command);
 }
