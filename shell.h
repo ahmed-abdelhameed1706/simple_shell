@@ -39,4 +39,6 @@ char **script_exe(char *buffer, char *re_buf, char **commands);
 char **get_commands(char *buffer);
 char **sep_handler(char *buf, int *size);
 char *strip(char *str);
+char **strip_tokens(char *buf, char *delim, int *size);
+char *remove_spaces(char *input);
 #endif /* SHELL_H */

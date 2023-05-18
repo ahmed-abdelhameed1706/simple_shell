@@ -21,18 +21,18 @@ char **get_tokens(char *argv, char *delim)
 	if (!words)
 		return (NULL);
 
-	token = _strtok(argv, delim);
+	token = strtok(argv, delim);
 
 	for (i = 0; token; i++)
 	{
 		if (token[0] == ' ' || token[strlen(token) - 1] == ' ')
 		{
-			strip_str = strip(token);
+			strip_str = remove_spaces(token);
 			words[i] = strip_str;
 		}
 		else
 			words[i] = strdup(token);
-		token = _strtok(NULL, delim);
+		token = strtok(NULL, delim);
 	}
 
 	words[i] = NULL;

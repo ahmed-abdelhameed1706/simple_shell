@@ -7,14 +7,17 @@
  */
 int main(void)
 {
-	char *buf = NULL, *command, **argv, **commands, *deli = " \n";
-	int parse_return_value, i;
+	char *buf = NULL, *command, **argv, **commands, *deli = " \n", *delim = ";";
+	int parse_return_value, i, size = 0;
 
 	signal(SIGINT, SIG_IGN);
 	while (1)
 	{
 		buf = get_user_input();
-		commands = get_commands(buf);
+		if (strchr(buf, ';') != NULL)
+			commands = strip_tokens(buf, delim, &size);
+		else
+			commands = get_commands(buf);
 		
 		if (!commands)
 		{
