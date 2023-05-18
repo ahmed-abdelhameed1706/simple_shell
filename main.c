@@ -39,7 +39,7 @@ int main(void)
 			if (parse_return_value == 0)
 				continue;
 
-			command = get_path(argv[0]);
+			command = get_path(argv[0], _getenv("PATH"));
 
 			if (strcmp(command, "null") != 0)
 				execute(command, argv);
