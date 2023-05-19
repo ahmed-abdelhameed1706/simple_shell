@@ -5,10 +5,14 @@
  * @command: enterd command
  * Return: comamnd path
 */
-char *get_path(char *command, char *path)
+char *get_path(char *command)
 {
 	char *command_path, *token;
 	int command_len, path_len, i;
+	char path[] = "/home/vagrant/bin:/home/vagrant/.local/bin:/usr/local/sbin:\
+			/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:\
+			/usr/games:/usr/local/games:/snap/bin";
+
 
 	if (command[0] == '/' && access(command, F_OK) == 0)
 	{
