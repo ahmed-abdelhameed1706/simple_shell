@@ -12,7 +12,7 @@ char **get_tokens(char *argv, char *delim)
 	char *token, **words, *strip_str;
 	int i, size = 0;
 
-	for (i = 0; argv[i] != '\n'; i++)
+	for (i = 0; argv[i] != '\0'; i++)
 		if (argv[i] == delim[0])
 			size++;
 	size++;

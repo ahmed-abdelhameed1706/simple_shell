@@ -14,7 +14,7 @@ char *_getenv(const char *name)
 	while (*env)
 	{
 		tmp = strdup(*env);
-		token = _strtok(tmp, "=");
+		token = _strtok(*env, "=");
 		if (strcmp(token, name) == 0)
 		{
 			token = _strtok(NULL, "=");
