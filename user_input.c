@@ -11,17 +11,26 @@ char *get_user_input(void)
 	size_t n = 0;
 	char *buffer = NULL;
 	ssize_t val;
-	if (isatty(STDIN_FILENO))	
+	int i;
+
+	if (isatty(STDIN_FILENO))
 		write(STDIN_FILENO, "> ", 2);
 	val = _getline(&buffer, &n, stdin);
 
 	if (val == -1)
 	{
-		if (isatty(STDIN_FILENO))	
+		if (isatty(STDIN_FILENO))
 			write(STDIN_FILENO, "\n", 1);
 		free(buffer);
 		exit(0);
 	}
+	for (i = 0; buffer[i]; i++)
+		if (buffer[i] == '#')
+		{
+			buffer[i] = '\n';
+			buffer[i + 1] = '\0';
+			break;
+		}
 
 	return (buffer);
 }

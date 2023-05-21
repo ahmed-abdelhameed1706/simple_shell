@@ -28,51 +28,39 @@ char **sep_handler(char *buf, int *size)
 }
 
 /**
+ * strip_tokens - strips strings from spaces and tokinize it
+ * @buf: string to be tokenized
+ * @delim: delimitar
+ *
+ * Return: array of tokens
  */
 
 char **strip_tokens(char *buf, char *delim)
 {
 	char **tokens = NULL, *buf_cp, *start, *end, *token, *last_token;
-	char *token_size, *count_buf;
 	size_t last_len;
-	int i, size = 0;
+	int i, size = count_tokens(buf, delim);
 
 	buf_cp = strdup(buf);
-
 	if (buf_cp == NULL)
 		return (NULL);
-
-	count_buf = strdup(buf);
-	token_size = _strtok(count_buf, delim);
-	while (token_size)
-	{
-		size++;
-		token_size = _strtok(NULL, delim);
-	}
-	free(count_buf);
-	
 	tokens = malloc(sizeof(char *) * (size + 1));
 	if (tokens == NULL)
 	{
 		free(buf_cp);
 		return (NULL);
 	}
-
 	token = _strtok(buf_cp, delim);
-
 	for (i = 0; token; i++)
 	{
 		start = token;
 		end = token + strlen(token) - 1;
-
 		while (*start && isspace((unsigned char) *start))
 			start++;
 		while (end > start && isspace((unsigned char) *end))
 			end--;
 		*(end + 1) = '\0';
-
 		tokens[i] = strdup(token);
-
 		token = _strtok(NULL, delim);
 	}
 	if (size > 0)
@@ -87,9 +75,16 @@ char **strip_tokens(char *buf, char *delim)
 	return (tokens);
 }
 
+/**
+ * remove_spaces - removes spaces from input
+ * @input: string to remove spaces from
+ *
+ * Return: striped string
+ */
+
 char *remove_spaces(char *input)
 {
-	int input_len, i , j , in_space = 0;
+	int input_len, i, j, in_space = 0;
 	char *striped_token;
 
 	input_len = strlen(input);
@@ -117,4 +112,29 @@ char *remove_spaces(char *input)
 	}
 	striped_token[j] = '\0';
 	return (striped_token);
+}
+
+/**
+ * count_tokens - counts number of tokens based on a delim
+ * @str: string to count tokens in
+ * @delim: a delim
+ *
+ * Return: number of tokens
+ */
+
+int count_tokens(char *str, char *delim)
+{
+	char *tokens_cp, *token;
+	int count = 0;
+
+	tokens_cp = strdup(str);
+	token = _strtok(tokens_cp, delim);
+
+	while (token)
+	{
+		count++;
+		token = _strtok(NULL, delim);
+	}
+	free(tokens_cp);
+	return (count);
 }

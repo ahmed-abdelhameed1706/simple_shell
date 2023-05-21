@@ -42,4 +42,5 @@ char *strip(char *str);
 char **strip_tokens(char *buf, char *delim);
 char *remove_spaces(char *input);
 char *_getenv(const char *name);
+int count_tokens(char *str, char *delim);
 #endif /* SHELL_H */

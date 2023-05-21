@@ -49,7 +49,6 @@ char *_strtok(char *str, const char *delim)
 	{
 		if (strchr(delim, backup_str[i]) != NULL)
 		{
-			
 			backup_str[i] = '\0';
 			backup_str = &(backup_str[i + 1]);
 			return (token);

@@ -19,13 +19,11 @@ char *get_path(char *command)
 		command = strdup(command);
 		return (command);
 	}
-
 	else if (command[0] == '/' && access(command, F_OK) == -1)
 	{
 		command = strdup("null");
 		return (command);
 	}
-
 	token = _strtok(path, ":");
 	while (token)
 	{

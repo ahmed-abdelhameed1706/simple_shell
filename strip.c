@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * strip - strips string from spaces
+ * @str: string to be striped
+ *
+ * Return: pointer to a striped char
+ */
+
 char *strip(char *str)
 {
 	int start_point, end_point, i;
@@ -16,7 +23,7 @@ char *strip(char *str)
 
 	strip_str = malloc(sizeof(char) * end_point);
 
-	for (i = 0;start_point < end_point; start_point++, i++)
+	for (i = 0; start_point < end_point; start_point++, i++)
 		strip_str[i] = str[start_point];
 
 	return (strip_str);

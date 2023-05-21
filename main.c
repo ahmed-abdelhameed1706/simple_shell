@@ -7,25 +7,18 @@
  */
 int main(void)
 {
-	char *buf = NULL, *command, **argv, **commands = NULL, *deli = " \n", *delim = ";";
+	char *buf = NULL, *command, **argv, **commands = NULL, *deli = " \n";
+	char *delim = ";";
 	int parse_return_value, i;
 
 	signal(SIGINT, SIG_IGN);
 	while (1)
 	{
 		buf = get_user_input();
-		for (i = 0; buf[i]; i++)
-			if (buf[i] == '#')
-			{
-				buf[i] = '\n';
-				buf[i + 1] = '\0';
-				break;
-			}
 		if (strchr(buf, ';') != NULL)
 			commands = strip_tokens(buf, delim);
 		else
 			commands = get_commands(buf);
-		
 		if (!commands)
 		{
 			free(buf);
@@ -34,18 +27,14 @@ int main(void)
 		for (i = 0; commands[i] != NULL; i++)
 		{
 			argv = get_tokens(commands[i], deli);
-
 			parse_return_value = parse_input(argv, commands[i]);
 			if (parse_return_value == 0)
 				continue;
-
 			command = get_path(argv[0]);
-
 			if (strcmp(command, "null") != 0)
 				execute(command, argv);
 			else
 				perror("Error");
-
 			free_tokens(argv);
 			free(command);
 		}
@@ -54,4 +43,3 @@ int main(void)
 	}
 	return (0);
 }
-
