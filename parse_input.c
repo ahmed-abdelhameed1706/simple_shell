@@ -25,7 +25,6 @@ int parse_input(char **argv, char *buf)
 	{
 		cd(argv[1]);
 		free_tokens(argv);
-		free(buf);
 		return (0);
 	}
 	return (-1);

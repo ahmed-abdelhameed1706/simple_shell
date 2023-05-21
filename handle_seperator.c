@@ -30,20 +30,37 @@ char **sep_handler(char *buf, int *size)
 /**
  */
 
-char **strip_tokens(char *buf, char *delim, int *size)
+char **strip_tokens(char *buf, char *delim)
 {
 	char **tokens = NULL, *buf_cp, *start, *end, *token, *last_token;
+	char *token_size, *count_buf;
 	size_t last_len;
-	*size = 0;
+	int i, size = 0;
 
 	buf_cp = strdup(buf);
 
 	if (buf_cp == NULL)
 		return (NULL);
 
+	count_buf = strdup(buf);
+	token_size = _strtok(count_buf, delim);
+	while (token_size)
+	{
+		size++;
+		token_size = _strtok(NULL, delim);
+	}
+	free(count_buf);
+	
+	tokens = malloc(sizeof(char *) * (size + 1));
+	if (tokens == NULL)
+	{
+		free(buf_cp);
+		return (NULL);
+	}
+
 	token = _strtok(buf_cp, delim);
 
-	while (token != NULL)
+	for (i = 0; token; i++)
 	{
 		start = token;
 		end = token + strlen(token) - 1;
@@ -54,25 +71,18 @@ char **strip_tokens(char *buf, char *delim, int *size)
 			end--;
 		*(end + 1) = '\0';
 
-		tokens = realloc(tokens, (*size + 1) * sizeof(char *));
-
-		if (tokens == NULL)
-		{
-			free(buf_cp);
-			return (NULL);
-		}
-		tokens[*size] = strdup(start);
-		(*size)++;
+		tokens[i] = strdup(token);
 
 		token = _strtok(NULL, delim);
 	}
-	if (*size > 0)
+	if (size > 0)
 	{
-		last_token = tokens[*size - 1];
+		last_token = tokens[size - 1];
 		last_len = strlen(last_token);
 		if (last_len > 0 && last_token[last_len - 1] == '\n')
 			last_token[last_len - 1] = '\0';
 	}
+	tokens[i] = NULL;
 	free(buf_cp);
 	return (tokens);
 }

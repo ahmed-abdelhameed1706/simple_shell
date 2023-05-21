@@ -28,7 +28,8 @@ char **get_tokens(char *argv, char *delim)
 		if (token[0] == ' ' || token[strlen(token) - 1] == ' ')
 		{
 			strip_str = remove_spaces(token);
-			words[i] = strip_str;
+			words[i] = strdup(strip_str);
+			free(strip_str);
 		}
 		else
 			words[i] = strdup(token);
@@ -56,6 +57,8 @@ void free_tokens(char **tokens)
 	for (i = 0; tokens[i] != NULL; i++)
 	{
 		free(tokens[i]);
+		tokens[i] = NULL;
 	}
 	free(tokens);
+	tokens = NULL;
 }

@@ -7,8 +7,8 @@
  */
 int main(void)
 {
-	char *buf = NULL, *command, **argv, **commands, *deli = " \n", *delim = ";";
-	int parse_return_value, i, size = 0;
+	char *buf = NULL, *command, **argv, **commands = NULL, *deli = " \n", *delim = ";";
+	int parse_return_value, i;
 
 	signal(SIGINT, SIG_IGN);
 	while (1)
@@ -22,7 +22,7 @@ int main(void)
 				break;
 			}
 		if (strchr(buf, ';') != NULL)
-			commands = strip_tokens(buf, delim, &size);
+			commands = strip_tokens(buf, delim);
 		else
 			commands = get_commands(buf);
 		
@@ -31,7 +31,7 @@ int main(void)
 			free(buf);
 			continue;
 		}
-		for (i = 0; commands[i]; i++)
+		for (i = 0; commands[i] != NULL; i++)
 		{
 			argv = get_tokens(commands[i], deli);
 

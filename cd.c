@@ -9,6 +9,7 @@
 void cd(char *dir)
 {
 	char *home, *oldpwd, *cwd;
+	int value;
 
 	home = getenv("HOME");
 	oldpwd = getenv("OLDPWD");
@@ -17,7 +18,13 @@ void cd(char *dir)
 	if (cwd == NULL)
 		return;
 
-	getcwd(cwd, PATH_MAX);
+	if (getcwd(cwd, PATH_MAX) == NULL)
+	{
+		perror("cwd");
+		free(cwd);
+		return;
+	}
+
 
 	if (dir == NULL)
 		dir = home;
@@ -27,7 +34,9 @@ void cd(char *dir)
 		dir = oldpwd;
 		printf("%s\n", dir);
 	}
-	if (chdir(dir) != 0)
+
+	value = chdir(dir);
+	if (value != 0)
 	{
 		perror("cd");
 	}
