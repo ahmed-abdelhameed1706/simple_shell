@@ -43,4 +43,5 @@ char **strip_tokens(char *buf, char *delim);
 char *remove_spaces(char *input);
 char *_getenv(const char *name);
 int count_tokens(char *str, char *delim);
+int exe_file(int argc, char *argv[]);
 #endif /* SHELL_H */
