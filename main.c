@@ -5,13 +5,25 @@
  *
  * Return: 0 on success
  */
-int main(void)
+int main(int argc, char* argvv[])
 {
 	char *buf = NULL, *command, **argv, **commands = NULL, *deli = " \n";
 	char *delim = ";";
 	int parse_return_value, i;
 
 	signal(SIGINT, SIG_IGN);
+
+	if (argc == 2)
+	{
+		command = argvv[1];
+		commands = malloc(sizeof(char *) * 2);
+		commands[0] = command;
+		commands[1] = NULL;
+		execute(command, commands);
+		free(commands);
+	}
+	else
+	{
 	while (1)
 	{
 		buf = get_user_input();
@@ -40,6 +52,7 @@ int main(void)
 		}
 		free(buf);
 		free_tokens(commands);
+	}
 	}
 	return (0);
 }
