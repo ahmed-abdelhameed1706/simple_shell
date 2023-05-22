@@ -42,6 +42,7 @@ char *check_env_path(char *command)
 		token = _strtok(NULL, ":");
 	}
 
+	free (path);
 	return (NULL);
 }
 
