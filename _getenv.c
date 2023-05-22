@@ -8,21 +8,31 @@
 */
 char *_getenv(const char *name)
 {
-	char **env = environ, *tmp;
-	char *token;
+	char **env = environ, *tmp_name, *result;
+	int i, j;
 
-	while (*env)
+	for (i = 0; env[i]; i++)
 	{
-		tmp = strdup(*env);
-		token = _strtok(*env, "=");
-		if (strcmp(token, name) == 0)
+		tmp_name = malloc(sizeof(char) * 2);
+
+		if (!tmp_name)
+			break;
+
+		for (j = 0; env[i][j] != '='; j++)
 		{
-			token = _strtok(NULL, "=");
-			free(tmp);
-			return (token);
+			tmp_name[j] = env[i][j];
+			tmp_name = realloc(tmp_name, sizeof(char) * (3 + j));
+			if (!tmp_name)
+				return (NULL);
 		}
-		free(tmp);
-		env++;
+		tmp_name[j] = '\0';
+		if (strcmp(tmp_name, name) == 0)
+		{
+			free(tmp_name);
+			result = strdup((j + 1) + env[i]);
+			return (result);
+		}
+		free(tmp_name);
 	}
 	return (NULL);
 }
