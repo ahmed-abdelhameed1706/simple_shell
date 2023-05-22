@@ -2,10 +2,12 @@
 
 /**
  * main - entry point to the program
+ * @argc: number of arguments
+ * @argvv: array of arguments
  *
  * Return: 0 on success
  */
-int main(int argc, char* argvv[])
+int main(int argc, char *argvv[])
 {
 	char *buf = NULL, *command, **argv, **commands = NULL, *deli = " \n";
 	char *delim = ";";
@@ -13,17 +15,8 @@ int main(int argc, char* argvv[])
 
 	signal(SIGINT, SIG_IGN);
 
-	if (argc == 2)
-	{
-		command = argvv[1];
-		commands = malloc(sizeof(char *) * 2);
-		commands[0] = command;
-		commands[1] = NULL;
-		execute(command, commands);
-		free(commands);
-	}
-	else
-	{
+	if (exe_file(argc, argvv) == 0)
+		return (0);
 	while (1)
 	{
 		buf = get_user_input();
@@ -52,7 +45,6 @@ int main(int argc, char* argvv[])
 		}
 		free(buf);
 		free_tokens(commands);
-	}
 	}
 	return (0);
 }
