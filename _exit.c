@@ -4,7 +4,7 @@
  * hsh_exit - a fucntion to parse the input exit
  * @argv: the argument to be parsed
  * @buf: the buffer to be freed
- *
+ * @file_name: given file name
  * Return: exit code
  */
 int hsh_exit(char **argv, char *buf, char *file_name)

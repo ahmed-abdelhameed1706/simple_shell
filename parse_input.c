@@ -4,7 +4,7 @@
  * parse_input - parses input coming from user
  * @argv: the input
  * @buf: buffer to be freed
- *
+ * @file_name: given file name
  * Return: 0 on success -1 on failure
  */
 int parse_input(char **argv, char *buf, char *file_name)

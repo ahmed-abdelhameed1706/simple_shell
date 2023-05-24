@@ -29,7 +29,7 @@ void get_signal(int sig);
 char *get_path(char *command);
 int print_env(void);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
-int exit_shell(char *code, char* file_name);
+int exit_shell(char *code, char *file_name);
 void cd(char *dir);
 int hsh_exit(char **argv, char *buf, char *file_name);
 int parse_input(char **argv, char *buf, char *file_name);
