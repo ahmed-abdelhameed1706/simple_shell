@@ -22,7 +22,7 @@ extern char **environ;
 
 /*Prototypes*/
 int execute(char *command, char **argv);
-char *get_user_input(int exit_status);
+char *get_user_input(void);
 char **get_tokens(char *argv, char *delim);
 void free_tokens(char **tokens);
 void get_signal(int sig);
@@ -31,8 +31,8 @@ int print_env(void);
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 int exit_shell(char *code, char *file_name);
 void cd(char *dir);
-int hsh_exit(int status, char **argv, char **commands, char *buff, char *file_name);
-int parse_input(int status, char **argv, char **commmands, char *buf, char *file_name);
+int hsh_exit(char **argv, char **commands, char *buff, char *file_name);
+int parse_input(char **argv, char **commmands, char *buf, char *file_name);
 int is_delim(char str_c, const char *delim);
 char *_strtok(char *str, const char *delim);
 char **script_exe(char *buffer, char *re_buf, char **commands);
@@ -52,4 +52,5 @@ char *_strdup(const char *str);
 char *_strchr(const char *s, int c);
 int _strlen(const char *s);
 int _atoi(const char *s);
+int status_info(int status);
 #endif /* SHELL_H */

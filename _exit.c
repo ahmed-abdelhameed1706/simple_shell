@@ -3,11 +3,12 @@
 /**
  * hsh_exit - a fucntion to parse the input exit
  * @argv: the argument to be parsed
- * @buf: the buffer to be freed
+ * @commands: list of all user commands
+ * @buff: user input buffer
  * @file_name: given file name
  * Return: exit code
  */
-int hsh_exit(int status, char **argv, char **commands, char *buff, char *file_name)
+int hsh_exit(char **argv, char **commands, char *buff, char *file_name)
 {
 	int exit_arg;
 
@@ -28,7 +29,7 @@ int hsh_exit(int status, char **argv, char **commands, char *buff, char *file_na
 		free_tokens(argv);
 		free_tokens(commands);
 		free(buff);
-		exit(status);
+		exit(status_info(-1));
 	}
 	return (0);
 }
