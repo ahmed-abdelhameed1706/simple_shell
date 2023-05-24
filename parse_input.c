@@ -25,7 +25,7 @@ int parse_input(char **argv, char **commands, char *buff, char *file_name)
 		free_tokens(argv);
 		free(buff);
 		free_tokens(commands);
-		exit(EXIT_SUCCESS);
+		exit(status_info(-1));
 	}
 	else if (_strcmp(argv[0], "env") == 0)
 		print_env();
