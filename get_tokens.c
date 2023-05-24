@@ -73,6 +73,12 @@ void free_tokens(char **tokens)
 	tokens = NULL;
 }
 
+
+/**
+ * fix_quotes - remove quotes from echo
+ *@str: given str
+ *Return: string without double quotes
+*/
 char *fix_quotes(char *str)
 {
 	int i, len;
