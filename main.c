@@ -29,18 +29,18 @@ int main(int argc, char *argvv[])
 		}
 		for (i = 0; commands[i] != NULL; i++)
 		{
-			exit_status = EXIT_SUCCESS;
 			argv = get_tokens(commands[i], deli);
-			parse_return_value = parse_input(argv, commands, buf, argvv[0]);
+			parse_return_value = parse_input(exit_status, argv, commands, buf, argvv[0]);
 			if (parse_return_value == 0)
 				continue;
 			command = get_path(argv[0]);
+			exit_status = EXIT_SUCCESS;
 			if (_strcmp(command, "null") != 0)
 				execute(command, argv);
 			else
 			{
 				handle_errors(argv[0], argvv[0]);
-				exit_status = EXIT_FAILURE;
+				exit_status = 127;
 			}
 			free_tokens(argv);
 			free(command);

@@ -7,7 +7,7 @@
  * @file_name: given file name
  * Return: 0 on success -1 on failure
  */
-int parse_input(char **argv, char **commands, char *buff, char *file_name)
+int parse_input(int status, char **argv, char **commands, char *buff, char *file_name)
 {
 	if (!argv[0])
 	{
@@ -16,7 +16,7 @@ int parse_input(char **argv, char **commands, char *buff, char *file_name)
 	}
 	if (_strcmp(argv[0], "exit") == 0)
 	{
-		hsh_exit(argv, commands, buff, file_name);
+		hsh_exit(status, argv, commands, buff, file_name);
 		return (0);
 	}
 	else if (_strcmp(argv[0], "env") == 0)
