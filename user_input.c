@@ -6,7 +6,7 @@
  * Return: a string that contains the user input to be used else where
  */
 
-char *get_user_input(int exit_status)
+char *get_user_input(void)
 {
 	size_t n = 0;
 	char *buffer = NULL;
