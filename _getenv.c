@@ -29,7 +29,7 @@ char *_getenv(const char *name)
 		if (_strcmp(tmp_name, name) == 0)
 		{
 			free(tmp_name);
-			result = strdup((j + 1) + env[i]);
+			result = _strdup((j + 1) + env[i]);
 			return (result);
 		}
 		free(tmp_name);

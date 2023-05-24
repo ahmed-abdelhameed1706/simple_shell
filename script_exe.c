@@ -30,7 +30,7 @@ char **script_exe(char *buffer, char *re_buf, char **commands)
 		{
 			re_buf[i] = *tmp_buf;
 			re_buf[i + 1] = '\0';
-			commands[j] = strdup(re_buf);
+			commands[j] = _strdup(re_buf);
 
 			i = 0;
 			buf_size = 2;
@@ -80,7 +80,7 @@ char **get_commands(char *buffer)
 			commands = sep_handler(buffer, &size);
 			return (commands);
 		}
-		commands[0] = strdup(buffer);
+		commands[0] = _strdup(buffer);
 		commands[1] = NULL;
 		return (commands);
 	}

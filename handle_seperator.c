@@ -41,7 +41,7 @@ char **strip_tokens(char *buf, char *delim)
 	size_t last_len;
 	int i, size = count_tokens(buf, delim);
 
-	buf_cp = strdup(buf);
+	buf_cp = _strdup(buf);
 	if (buf_cp == NULL)
 		return (NULL);
 	tokens = malloc(sizeof(char *) * (size + 1));
@@ -60,7 +60,7 @@ char **strip_tokens(char *buf, char *delim)
 		while (end > start && isspace((unsigned char) *end))
 			end--;
 		*(end + 1) = '\0';
-		tokens[i] = strdup(token);
+		tokens[i] = _strdup(token);
 		token = _strtok(NULL, delim);
 	}
 	if (size > 0)
@@ -127,7 +127,7 @@ int count_tokens(char *str, char *delim)
 	char *tokens_cp, *token;
 	int count = 0;
 
-	tokens_cp = strdup(str);
+	tokens_cp = _strdup(str);
 	token = _strtok(tokens_cp, delim);
 
 	while (token)

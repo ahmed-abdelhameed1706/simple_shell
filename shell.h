@@ -48,4 +48,5 @@ int exe_file(int argc, char *argv[]);
 void handle_errors(char *command, char *file_name);
 void sig_handler(int sig_num);
 int _strcmp(const char *s1, const char *s2);
+char *_strdup(const char *str);
 #endif /* SHELL_H */

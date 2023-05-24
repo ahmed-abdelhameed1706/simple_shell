@@ -57,13 +57,13 @@ char *get_path(char *command)
 
 	if (command[0] == '/' && access(command, F_OK) == 0)
 	{
-		command = strdup(command);
+		command = _strdup(command);
 		return (command);
 	}
 
 	else if (command[0] == '/' && access(command, F_OK) == -1)
 	{
-		command = strdup("null");
+		command = _strdup("null");
 		return (command);
 	}
 
@@ -72,6 +72,6 @@ char *get_path(char *command)
 	if (command_path)
 		return (command_path);
 
-	command = strdup("null");
+	command = _strdup("null");
 	return (command);
 }
