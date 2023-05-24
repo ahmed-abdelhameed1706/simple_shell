@@ -15,7 +15,7 @@ char *strip(char *str)
 	for (start_point = 0; str[start_point] == ' ';)
 		start_point++;
 
-	end_point = strlen(str) - 1;
+	end_point = _strlen(str) - 1;
 
 	while (str[end_point] == ' ')
 		end_point--;

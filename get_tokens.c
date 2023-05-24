@@ -25,7 +25,7 @@ char **get_tokens(char *argv, char *delim)
 
 	for (i = 0; token; i++)
 	{
-		if (token[0] == ' ' || token[strlen(token) - 1] == ' ')
+		if (token[0] == ' ' || token[_strlen(token) - 1] == ' ')
 		{
 			strip_str = remove_spaces(token);
 			words[i] = _strdup(strip_str);

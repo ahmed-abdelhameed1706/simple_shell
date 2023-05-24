@@ -18,7 +18,7 @@ char **sep_handler(char *buf, int *size)
 
 	while (input_tokens[*size] != NULL)
 	{
-		len = strlen(input_tokens[*size]);
+		len = _strlen(input_tokens[*size]);
 		input_tokens[*size] = realloc(input_tokens[*size], sizeof(char) * (len + 2));
 		input_tokens[*size][len] = '\n';
 		input_tokens[*size][len + 1] = '\0';
@@ -54,7 +54,7 @@ char **strip_tokens(char *buf, char *delim)
 	for (i = 0; token; i++)
 	{
 		start = token;
-		end = token + strlen(token) - 1;
+		end = token + _strlen(token) - 1;
 		while (*start && isspace((unsigned char) *start))
 			start++;
 		while (end > start && isspace((unsigned char) *end))
@@ -66,7 +66,7 @@ char **strip_tokens(char *buf, char *delim)
 	if (size > 0)
 	{
 		last_token = tokens[size - 1];
-		last_len = strlen(last_token);
+		last_len = _strlen(last_token);
 		if (last_len > 0 && last_token[last_len - 1] == '\n')
 			last_token[last_len - 1] = '\0';
 	}
@@ -87,7 +87,7 @@ char *remove_spaces(char *input)
 	int input_len, i, j, in_space = 0;
 	char *striped_token;
 
-	input_len = strlen(input);
+	input_len = _strlen(input);
 
 	striped_token = malloc((input_len + 1) * sizeof(char));
 

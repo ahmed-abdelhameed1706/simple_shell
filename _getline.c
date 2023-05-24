@@ -22,7 +22,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 
 	while (fgets(*lineptr + read_chars, *n - read_chars, stream) != NULL)
 	{
-		read_chars += strlen(*lineptr + read_chars);
+		read_chars += _strlen(*lineptr + read_chars);
 		line_end = _strchr(*lineptr, '\n');
 		if (line_end != NULL)
 			return (read_chars);

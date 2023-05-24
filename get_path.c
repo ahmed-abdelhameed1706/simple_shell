@@ -16,8 +16,8 @@ char *check_env_path(char *command)
 
 	while (token)
 	{
-		command_len = strlen(command);
-		path_len = strlen(token);
+		command_len = _strlen(command);
+		path_len = _strlen(token);
 
 		command_path = malloc(sizeof(char) * (command_len + path_len + 2));
 		if (!command_path)
