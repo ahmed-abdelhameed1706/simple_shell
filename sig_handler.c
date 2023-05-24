@@ -1,0 +1,12 @@
+#include "shell.h"
+
+/**
+ * sig_handler - handle the interrupt signal
+ * @sig_num: id of the signal
+ * Return: Nothing
+*/
+void sig_handler(int sig_num)
+{
+	if (sig_num == SIGINT)
+		write(STDIN_FILENO, "\n> ", 3);
+}
