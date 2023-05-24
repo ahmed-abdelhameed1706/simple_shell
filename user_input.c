@@ -25,7 +25,7 @@ char *get_user_input(void)
 		if (isatty(STDIN_FILENO))
 			write(STDIN_FILENO, "\n", 1);
 		free(buffer);
-		exit(EXIT_FAILURE);
+		exit(0);
 	}
 	for (i = 0; buffer[i]; i++)
 		if (buffer[i] == '#')
