@@ -31,5 +31,6 @@ int hsh_exit(char **argv, char **commands, char *buff, char *file_name)
 		free(buff);
 		exit(status_info(-1));
 	}
+	free_tokens(argv);
 	return (0);
 }
