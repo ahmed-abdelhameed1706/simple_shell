@@ -14,14 +14,14 @@ int parse_input(char **argv, char *buf, char *file_name)
 		free_tokens(argv);
 		return (0);
 	}
-	if (strcmp(argv[0], "exit") == 0)
+	if (_strcmp(argv[0], "exit") == 0)
 	{
 		hsh_exit(argv, buf, file_name);
 		return (0);
 	}
-	else if (strcmp(argv[0], "env") == 0)
+	else if (_strcmp(argv[0], "env") == 0)
 		print_env();
-	else if (strcmp(argv[0], "cd") == 0)
+	else if (_strcmp(argv[0], "cd") == 0)
 	{
 		cd(argv[1]);
 		free_tokens(argv);

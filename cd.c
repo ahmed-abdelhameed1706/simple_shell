@@ -29,7 +29,7 @@ void cd(char *dir)
 	if (dir == NULL)
 		dir = home;
 
-	else if (strcmp(dir, "-") == 0)
+	else if (_strcmp(dir, "-") == 0)
 	{
 		dir = oldpwd;
 		printf("%s\n", dir);

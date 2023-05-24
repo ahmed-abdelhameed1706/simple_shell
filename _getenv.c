@@ -26,7 +26,7 @@ char *_getenv(const char *name)
 				return (NULL);
 		}
 		tmp_name[j] = '\0';
-		if (strcmp(tmp_name, name) == 0)
+		if (_strcmp(tmp_name, name) == 0)
 		{
 			free(tmp_name);
 			result = strdup((j + 1) + env[i]);
