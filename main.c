@@ -35,7 +35,7 @@ int main(int argc, char *argvv[])
 			if (parse_return_value == 0)
 				continue;
 			command = get_path(argv[0]);
-			if (strcmp(command, "null") != 0)
+			if (_strcmp(command, "null") != 0)
 				execute(command, argv);
 			else
 			{
