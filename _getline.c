@@ -23,7 +23,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 	while (fgets(*lineptr + read_chars, *n - read_chars, stream) != NULL)
 	{
 		read_chars += strlen(*lineptr + read_chars);
-		line_end = strchr(*lineptr, '\n');
+		line_end = _strchr(*lineptr, '\n');
 		if (line_end != NULL)
 			return (read_chars);
 		if (*n - read_chars < 128)

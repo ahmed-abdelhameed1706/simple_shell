@@ -18,7 +18,7 @@ int main(int argc, char *argvv[])
 	while (1)
 	{
 		buf = get_user_input();
-		if (strchr(buf, ';') != NULL)
+		if (_strchr(buf, ';') != NULL)
 			commands = strip_tokens(buf, delim);
 		else
 			commands = get_commands(buf);

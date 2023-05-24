@@ -2,7 +2,6 @@
 
 /**
  * get_user_input - gets the user input and stores
- * @exit_status: last command status
  * Return: a string that contains the user input to be used else where
  */
 

@@ -74,7 +74,7 @@ char **get_commands(char *buffer)
 	if (buffer[0] != '.')
 	{
 		free(re_buf);
-		if (strchr(buffer, ';') != NULL)
+		if (_strchr(buffer, ';') != NULL)
 		{
 			free(commands);
 			commands = sep_handler(buffer, &size);
@@ -86,7 +86,7 @@ char **get_commands(char *buffer)
 	}
 
 	buffer = &(buffer[2]);
-	rm_new = strchr(buffer, '\n');
+	rm_new = _strchr(buffer, '\n');
 	*rm_new = '\0';
 
 	return (script_exe(buffer, re_buf, commands));

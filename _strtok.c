@@ -38,7 +38,7 @@ char *_strtok(char *str, const char *delim)
 
 	if (backup_str == NULL)
 		return (NULL);
-	while (*backup_str != '\0' && strchr(delim, *backup_str) != NULL)
+	while (*backup_str != '\0' && _strchr(delim, *backup_str) != NULL)
 		backup_str++;
 
 	if (*backup_str == '\0')
@@ -47,7 +47,7 @@ char *_strtok(char *str, const char *delim)
 	token = backup_str;
 	for (i = 0; backup_str[i] != '\0'; i++)
 	{
-		if (strchr(delim, backup_str[i]) != NULL)
+		if (_strchr(delim, backup_str[i]) != NULL)
 		{
 			backup_str[i] = '\0';
 			backup_str = &(backup_str[i + 1]);
