@@ -15,7 +15,7 @@ char *get_user_input(int exit_status)
 
 	if (isatty(STDIN_FILENO))
 	{
-		signal(SIGINT, SIG_IGN);
+		signal(SIGINT, sig_handler);
 		write(STDIN_FILENO, "> ", 2);
 	}
 	val = _getline(&buffer, &n, stdin);
