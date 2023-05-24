@@ -10,6 +10,7 @@ static int error_count = 1;
  */
 int execute(char *command, char **argv)
 {
+	int status;
 	char **env = environ;
 	pid_t pid;
 
@@ -25,7 +26,14 @@ int execute(char *command, char **argv)
 		if (execve(command, argv, env) == -1)
 			perror("Error:");
 	}
-	wait(NULL);
+	wait(&status);
+	if (status == 512)
+		status_info(2);
+	else if(status == 256)
+		status_info(1);
+	else
+		status_info(status);
+
 	error_count++;
 	return (0);
 }
