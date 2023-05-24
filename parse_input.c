@@ -17,8 +17,15 @@ int parse_input(char **argv, char **commands, char *buff, char *file_name)
 	}
 	if (_strcmp(argv[0], "exit") == 0)
 	{
-		hsh_exit(argv, commands, buff, file_name);
-		return (0);
+		if (argv[1])
+		{
+			hsh_exit(argv, commands, buff, file_name);
+			return (0);
+		}
+		free_tokens(argv);
+		free(buff);
+		free_tokens(commands);
+		exit(EXIT_SUCCESS);
 	}
 	else if (_strcmp(argv[0], "env") == 0)
 		print_env();
