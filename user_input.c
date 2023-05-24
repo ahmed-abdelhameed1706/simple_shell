@@ -6,7 +6,7 @@
  * Return: a string that contains the user input to be used else where
  */
 
-char *get_user_input(void)
+char *get_user_input(int exit_status)
 {
 	size_t n = 0;
 	char *buffer = NULL;
@@ -25,7 +25,7 @@ char *get_user_input(void)
 		if (isatty(STDIN_FILENO))
 			write(STDIN_FILENO, "\n", 1);
 		free(buffer);
-		exit(0);
+		exit(exit_status);
 	}
 	for (i = 0; buffer[i]; i++)
 		if (buffer[i] == '#')
