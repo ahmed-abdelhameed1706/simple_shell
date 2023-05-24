@@ -1,8 +1,13 @@
 #include "shell.h"
 
 /**
+ * exe_file - executes a file if there was any
+ * @argc: number of arguments
+ * @argv: array of arguments
+ *
+ * Return: 0 on success -1 on failure
  */
-int exe_file(int argc, char* argv[])
+int exe_file(int argc, char *argv[])
 {
 	char *command, **commands = NULL;
 
