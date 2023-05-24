@@ -22,7 +22,7 @@ extern char **environ;
 
 /*Prototypes*/
 int execute(char *command, char **argv);
-char *get_user_input();
+char *get_user_input(int exit_status);
 char **get_tokens(char *argv, char *delim);
 void free_tokens(char **tokens);
 void get_signal(int sig);
