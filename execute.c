@@ -29,7 +29,7 @@ int execute(char *command, char **argv)
 	wait(&status);
 	if (status == 512)
 		status_info(2);
-	else if(status == 256)
+	else if (status == 256)
 		status_info(1);
 	else
 		status_info(status);
