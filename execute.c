@@ -52,7 +52,7 @@ int exit_shell(char *code, char *file_name)
 			return (-1);
 		}
 	}
-	exit_code = atoi(code);
+	exit_code = _atoi(code);
 
 	return (exit_code);
 }

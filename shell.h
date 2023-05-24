@@ -22,7 +22,7 @@ extern char **environ;
 
 /*Prototypes*/
 int execute(char *command, char **argv);
-char *get_user_input(void);
+char *get_user_input(int exit_status);
 char **get_tokens(char *argv, char *delim);
 void free_tokens(char **tokens);
 void get_signal(int sig);
@@ -51,4 +51,5 @@ int _strcmp(const char *s1, const char *s2);
 char *_strdup(const char *str);
 char *_strchr(const char *s, int c);
 int _strlen(const char *s);
+int _atoi(const char *s);
 #endif /* SHELL_H */

@@ -2,10 +2,11 @@
 
 /**
  * get_user_input - gets the user input and stores
+ * @exit_status: status of last command
  * Return: a string that contains the user input to be used else where
  */
 
-char *get_user_input(void)
+char *get_user_input(int exit_status)
 {
 	size_t n = 0;
 	char *buffer = NULL;
@@ -24,7 +25,7 @@ char *get_user_input(void)
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "\n", 1);
 		free(buffer);
-		exit(EXIT_SUCCESS);
+		exit(exit_status);
 	}
 	for (i = 0; buffer[i]; i++)
 		if (buffer[i] == '#')
