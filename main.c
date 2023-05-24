@@ -31,7 +31,7 @@ int main(int argc, char *argvv[])
 		{
 			exit_status = EXIT_SUCCESS;
 			argv = get_tokens(commands[i], deli);
-			parse_return_value = parse_input(argv, commands[i], argvv[0]);
+			parse_return_value = parse_input(argv, commands, buf, argvv[0]);
 			if (parse_return_value == 0)
 				continue;
 			command = get_path(argv[0]);

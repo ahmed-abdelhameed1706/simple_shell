@@ -7,7 +7,7 @@
  * @file_name: given file name
  * Return: exit code
  */
-int hsh_exit(char **argv, char *buf, char *file_name)
+int hsh_exit(char **argv, char **commands, char *buff, char *file_name)
 {
 	int exit_arg;
 
@@ -17,14 +17,16 @@ int hsh_exit(char **argv, char *buf, char *file_name)
 		if (exit_arg >= 0)
 		{
 			free_tokens(argv);
-			free(buf);
+			free_tokens(commands);
+			free(buff);
 			exit(exit_arg);
 		}
 	}
 	else
 	{
 		free_tokens(argv);
-		free(buf);
+		free_tokens(commands);
+		free(buff);
 		exit(EXIT_SUCCESS);
 	}
 	return (0);
