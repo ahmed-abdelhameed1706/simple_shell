@@ -21,7 +21,7 @@ int main(int argc, char *argvv[])
 		if (_strchr(buf, ';') != NULL)
 			commands = strip_tokens(buf, delim);
 		else
-			commands = get_commands(buf);
+			commands = get_commands(buf, argvv[0]);
 		if (!commands)
 		{
 			free(buf);

@@ -36,7 +36,7 @@ int parse_input(char **argv, char **commmands, char *buf, char *file_name);
 int is_delim(char str_c, const char *delim);
 char *_strtok(char *str, const char *delim);
 char **script_exe(char *buffer, char *re_buf, char **commands);
-char **get_commands(char *buffer);
+char **get_commands(char *buffer, char *file_name);
 char **sep_handler(char *buf, int *size);
 char *strip(char *str);
 char **strip_tokens(char *buf, char *delim);
@@ -53,4 +53,5 @@ char *_strchr(const char *s, int c);
 int _strlen(const char *s);
 int _atoi(const char *s);
 int status_info(int status);
+void handle_permission(char *com, char *file);
 #endif /* SHELL_H */

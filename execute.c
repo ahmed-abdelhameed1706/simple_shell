@@ -70,3 +70,16 @@ void handle_errors(char *command, char *file_name)
 {
 	fprintf(stderr, "%s: %d: %s: not found\n", file_name, error_count++, command);
 }
+
+/**
+ * handle_permission - handles permission errors
+ * @com: name of the command
+ * @file: file name
+ *
+ * Return: nothing
+ */
+
+void handle_permission(char *com, char *file)
+{
+	fprintf(stderr, "%s: %d: %s: Permission denied\n", file, error_count++, com);
+}

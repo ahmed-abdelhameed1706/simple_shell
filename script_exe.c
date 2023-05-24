@@ -26,23 +26,23 @@ char **script_exe(char *buffer, char *re_buf, char **commands)
 	}
 	for (i = 0; re; i++)
 	{
+		re_buf[i] = *tmp_buf;
 		if (*tmp_buf == '\n')
 		{
-			re_buf[i] = *tmp_buf;
 			re_buf[i + 1] = '\0';
-			commands[j] = _strdup(re_buf);
-
-			i = 0;
+			if (re_buf[0] != '#')
+			{
+				commands[j] = _strdup(re_buf);
+				commands_size++;
+				commands = realloc(commands, sizeof(char *) * commands_size);
+				j++;
+			}
+			i = -1;
 			buf_size = 2;
-			commands_size++;
-			j++;
-
-			commands = realloc(commands, sizeof(char *) * commands_size);
 			re_buf = realloc(re_buf, sizeof(char) * buf_size);
 			re = read(op, tmp_buf, 1);
 			continue;
 		}
-		re_buf[i] = *tmp_buf;
 		buf_size++;
 		re_buf = realloc(re_buf, sizeof(char) * buf_size);
 		re = read(op, tmp_buf, 1);
@@ -55,11 +55,12 @@ char **script_exe(char *buffer, char *re_buf, char **commands)
 /**
  * get_commands - get all commands from buffer
  * @buffer: user input
+ * @file_name: current file name
  * Return: pointer to pointer array of commands
 */
-char **get_commands(char *buffer)
+char **get_commands(char *buffer, char *file_name)
 {
-	char *re_buf = NULL, **commands = NULL, *rm_new;
+	char *re_buf = NULL, **commands = NULL, *rm_new, *error_buf;
 	int size;
 
 	re_buf = malloc(sizeof(char) * 2);
@@ -70,7 +71,6 @@ char **get_commands(char *buffer)
 		free(re_buf);
 		return (NULL);
 	}
-
 	if (buffer[0] != '.')
 	{
 		free(re_buf);
@@ -84,10 +84,20 @@ char **get_commands(char *buffer)
 		commands[1] = NULL;
 		return (commands);
 	}
-
-	buffer = &(buffer[2]);
 	rm_new = _strchr(buffer, '\n');
 	*rm_new = '\0';
+	error_buf = _strdup(buffer);
+	buffer = &(buffer[2]);
+	if (access(buffer, X_OK) != 0)
+	{
+		handle_permission(error_buf, file_name);
+		status_info(126);
+		free(error_buf);
+		free_tokens(commands);
+		free(re_buf);
+		return (NULL);
+	}
 
+	free(error_buf);
 	return (script_exe(buffer, re_buf, commands));
 }
