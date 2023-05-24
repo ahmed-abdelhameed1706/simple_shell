@@ -39,7 +39,7 @@ int main(int argc, char *argvv[])
 			if (strcmp(command, "null") != 0)
 				execute(command, argv);
 			else
-				perror("Error");
+				handle_errors(argv[0], argvv[0]);
 			free_tokens(argv);
 			free(command);
 		}

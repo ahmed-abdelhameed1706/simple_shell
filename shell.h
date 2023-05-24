@@ -45,4 +45,5 @@ char *_getenv(const char *name);
 int count_tokens(char *str, char *delim);
 char *check_env_path(char *command);
 int exe_file(int argc, char *argv[]);
+void handle_errors(char *command, char *file_name);
 #endif /* SHELL_H */
