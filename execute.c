@@ -39,22 +39,22 @@ int execute(char *command, char **argv)
  */
 int exit_shell(char *code, char *file_name)
 {
-        int exit_code, i;
+	int exit_code, i;
 
-        if (code == NULL)
-                return (0);
+	if (code == NULL)
+		return (0);
 
-        for (i = 0; code[i] != '\0'; i++)
-        {
-                if (!isdigit(code[i]))
-                {
-                        printf("%s: %d: Illegal number: %s\n", file_name, error_count++, code);
-                        return (-1);
-                }
-        }
-        exit_code = atoi(code);
+	for (i = 0; code[i] != '\0'; i++)
+	{
+		if (!isdigit(code[i]))
+		{
+			printf("%s: %d: Illegal number: %s\n", file_name, error_count++, code);
+			return (-1);
+		}
+	}
+	exit_code = atoi(code);
 
-        return (exit_code);
+	return (exit_code);
 }
 
 /**
@@ -67,5 +67,5 @@ int exit_shell(char *code, char *file_name)
 
 void handle_errors(char *command, char *file_name)
 {
-        fprintf(stderr, "%s: %d: %s: not found\n", file_name, error_count++, command);
+	fprintf(stderr, "%s: %d: %s: not found\n", file_name, error_count++, command);
 }
