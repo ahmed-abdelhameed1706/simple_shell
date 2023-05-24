@@ -17,7 +17,7 @@ int parse_input(char **argv, char *buf)
 	if (strcmp(argv[0], "exit") == 0)
 	{
 		hsh_exit(argv, buf);
-		return (0);
+		exit(0);
 	}
 	else if (strcmp(argv[0], "env") == 0)
 		print_env();
