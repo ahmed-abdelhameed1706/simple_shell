@@ -46,4 +46,5 @@ int count_tokens(char *str, char *delim);
 char *check_env_path(char *command);
 int exe_file(int argc, char *argv[]);
 void handle_errors(char *command, char *file_name);
+void signal_handler(int signum);
 #endif /* SHELL_H */

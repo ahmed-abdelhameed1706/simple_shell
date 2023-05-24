@@ -43,3 +43,5 @@ void handle_errors(char *command, char *file_name)
 {
         fprintf(stderr, "%s: %d: %s: not found\n", file_name, error_count++, command);
 }
+
+

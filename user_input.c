@@ -14,7 +14,10 @@ char *get_user_input(void)
 	int i;
 
 	if (isatty(STDIN_FILENO))
+	{
+		signal(SIGINT, SIG_IGN);
 		write(STDIN_FILENO, "> ", 2);
+	}
 	val = _getline(&buffer, &n, stdin);
 
 	if (val == -1)
@@ -22,7 +25,7 @@ char *get_user_input(void)
 		if (isatty(STDIN_FILENO))
 			write(STDIN_FILENO, "\n", 1);
 		free(buffer);
-		exit(0);
+		exit(EXIT_FAILURE);
 	}
 	for (i = 0; buffer[i]; i++)
 		if (buffer[i] == '#')

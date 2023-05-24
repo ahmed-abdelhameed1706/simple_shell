@@ -13,8 +13,6 @@ int main(int argc, char *argvv[])
 	char *delim = ";";
 	int parse_return_value, i;
 
-	signal(SIGINT, SIG_IGN);
-
 	if (exe_file(argc, argvv) == 0)
 		return (0);
 	while (1)
