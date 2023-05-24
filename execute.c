@@ -10,6 +10,7 @@ static int error_count = 1;
  */
 int execute(char *command, char **argv)
 {
+	char **env = environ;
 	pid_t pid;
 
 	pid = fork();
@@ -21,7 +22,7 @@ int execute(char *command, char **argv)
 	}
 	else if (pid == 0)
 	{
-		if (execve(command, argv, NULL) == -1)
+		if (execve(command, argv, env) == -1)
 			perror("Error:");
 	}
 	wait(NULL);
