@@ -32,7 +32,7 @@ int main(int argc, char *argvv[])
 		for (i = 0; commands[i] != NULL; i++)
 		{
 			argv = get_tokens(commands[i], deli);
-			parse_return_value = parse_input(argv, commands[i]);
+			parse_return_value = parse_input(argv, commands[i], argvv[0]);
 			if (parse_return_value == 0)
 				continue;
 			command = get_path(argv[0]);

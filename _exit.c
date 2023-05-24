@@ -7,13 +7,13 @@
  *
  * Return: exit code
  */
-int hsh_exit(char **argv, char *buf)
+int hsh_exit(char **argv, char *buf, char *file_name)
 {
 	int exit_arg;
 
 	if (argv[1])
 	{
-		exit_arg = exit_shell(argv[1]);
+		exit_arg = exit_shell(argv[1], file_name);
 		if (exit_arg >= 0)
 		{
 			free_tokens(argv);

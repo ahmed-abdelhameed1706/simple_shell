@@ -8,7 +8,10 @@
  *
  * Return: the exit code
  */
-int exit_shell(char *code)
+
+static int error_count = 1;
+
+int exit_shell(char *code, char *file_name)
 {
 	int exit_code, i;
 
@@ -19,11 +22,24 @@ int exit_shell(char *code)
 	{
 		if (!isdigit(code[i]))
 		{
-			printf("%s is not a valid exit status\n", code);
+			printf("%s: %d: Illegal number: %s\n",file_name, error_count++, code);
 			return (-1);
 		}
 	}
 	exit_code = atoi(code);
 
 	return (exit_code);
+}
+
+/**
+ * handle_errors - handles errors like sh
+ * @command: name of the command
+ * @file_name: file name
+ *
+ * Reutnr: nothing
+ */
+
+void handle_errors(char *command, char *file_name)
+{
+        fprintf(stderr, "%s: %d: %s: not found\n", file_name, error_count++, command);
 }

@@ -7,7 +7,7 @@
  *
  * Return: 0 on success -1 on failure
  */
-int parse_input(char **argv, char *buf)
+int parse_input(char **argv, char *buf, char *file_name)
 {
 	if (!argv[0])
 	{
@@ -16,8 +16,8 @@ int parse_input(char **argv, char *buf)
 	}
 	if (strcmp(argv[0], "exit") == 0)
 	{
-		hsh_exit(argv, buf);
-		exit(0);
+		hsh_exit(argv, buf, file_name);
+		return (0);
 	}
 	else if (strcmp(argv[0], "env") == 0)
 		print_env();
