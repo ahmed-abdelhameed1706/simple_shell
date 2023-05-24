@@ -11,7 +11,7 @@ int main(int argc, char *argvv[])
 {
 	char *buf = NULL, *command, **argv, **commands = NULL, *deli = " \n";
 	char *delim = ";";
-	int parse_return_value, i, exit_status = 0;
+	int parse_return_value, i, exit_status = EXIT_SUCCESS;
 
 	if (exe_file(argc, argvv) == 0)
 		return (0);
@@ -29,7 +29,7 @@ int main(int argc, char *argvv[])
 		}
 		for (i = 0; commands[i] != NULL; i++)
 		{
-			exit_status = 0;
+			exit_status = EXIT_SUCCESS;
 			argv = get_tokens(commands[i], deli);
 			parse_return_value = parse_input(argv, commands[i], argvv[0]);
 			if (parse_return_value == 0)
@@ -40,7 +40,7 @@ int main(int argc, char *argvv[])
 			else
 			{
 				handle_errors(argv[0], argvv[0]);
-				exit_status = 127;
+				exit_status = EXIT_FAILURE;
 			}
 			free_tokens(argv);
 			free(command);

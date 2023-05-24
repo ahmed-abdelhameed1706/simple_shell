@@ -25,7 +25,7 @@ int hsh_exit(char **argv, char *buf, char *file_name)
 	{
 		free_tokens(argv);
 		free(buf);
-		exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	return (0);
 }
