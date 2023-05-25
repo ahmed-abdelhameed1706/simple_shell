@@ -54,4 +54,5 @@ int _strlen(const char *s);
 int _atoi(const char *s);
 int status_info(int status);
 void handle_permission(char *com, char *file);
+char *fix_quotes(char *str);
 #endif /* SHELL_H */
