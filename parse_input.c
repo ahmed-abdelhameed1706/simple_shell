@@ -28,7 +28,10 @@ int parse_input(char **argv, char **commands, char *buff, char *file_name)
 		exit(status_info(-1));
 	}
 	else if (_strcmp(argv[0], "env") == 0)
+	{
 		print_env();
+		return (0);
+	}
 	else if (_strcmp(argv[0], "cd") == 0)
 	{
 		cd(argv[1]);
