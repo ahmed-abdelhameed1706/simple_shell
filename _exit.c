@@ -17,7 +17,6 @@ int hsh_exit(char **argv, char **commands, char *buff, char *file_name)
 		exit_arg = exit_shell(argv[1], file_name);
 		if (exit_arg >= 0)
 		{
-			printf("test");
 			free_tokens(argv);
 			free_tokens(commands);
 			free(buff);
