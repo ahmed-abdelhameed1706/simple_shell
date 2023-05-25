@@ -57,7 +57,7 @@ int exit_shell(char *code, char *file_name)
 	{
 		if (!isdigit(code[i]))
 		{
-			printf("%s: %d: Illegal number: %s\n", file_name, error_count++, code);
+			fprintf(stderr, "%s: %d: Illegal number: %s\n", file_name, error_count++, code);
 			return (-1);
 		}
 	}
